@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | RUDRA Solar Energy Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link rel="stylesheet" href="/shared.css" />
+    <style>
+
+      /* ===== PAGE BANNER ===== */
+      .page-banner {
+        margin-top: 72px;
+        position: relative;
+        height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .page-banner img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; opacity: 0.45;
+      }
+
+      .page-banner-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.55));
+      }
+
+      .page-banner-content {
+        position: relative; z-index: 2; text-align: center;
+      }
+
+      .page-banner-content h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800; color: #fff;
+        letter-spacing: 10px; text-transform: uppercase;
+        position: relative; display: inline-block;
+        padding: 14px 52px;
+      }
+
+      .page-banner-content h1::before {
+        content: '';
+        position: absolute; inset: 0;
+        border: 2px solid rgba(255,255,255,0.65);
+        border-radius: 4px;
+      }
+
+      .page-banner-breadcrumb {
+        position: absolute; bottom: 24px; left: 50%;
+        transform: translateX(-50%); z-index: 2;
+        display: flex; align-items: center; gap: 8px;
+        font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 1px;
+      }
+
+      .page-banner-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+      .page-banner-breadcrumb a:hover { color: #fff; }
+      .page-banner-breadcrumb span { color: var(--orange); }
+
+      /* ===== INTRO ===== */
+      .about-intro {
+        padding: 88px 30px 72px;
+        max-width: 1000px; margin: 0 auto; text-align: center;
+      }
+
+      .about-intro h2 {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 800; color: var(--text);
+        letter-spacing: -0.3px; margin-bottom: 28px;
+      }
+
+      .about-intro p {
+        font-size: 0.97rem; color: var(--muted); line-height: 1.9; margin-bottom: 18px;
+      }
+
+      /* ===== GLOBAL LEADER STATS ===== */
+      .global-section {
+        background: #f7f7f7; padding: 80px 48px;
+        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      }
+
+      .global-container { max-width: 1100px; margin: 0 auto; }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 800; color: var(--text); letter-spacing: -0.2px;
+        margin-bottom: 56px;
+      }
+
+      .global-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      /* 4th and 5th cards — center them on last row */
+      .global-grid .stat-item:nth-child(4) { grid-column: 1 / 2; }
+      .global-grid .stat-item:nth-child(5) { grid-column: 2 / 3; }
+
+      .stat-item {
+        background: #fff; border: 1px solid var(--border); border-radius: 14px;
+        padding: 32px 28px; display: flex; flex-direction: column;
+        align-items: center; text-align: center; gap: 10px;
+        opacity: 0; transform: translateY(24px);
+        transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .stat-item.visible { opacity: 1; transform: translateY(0); }
+      .stat-item:hover   { border-color: rgba(249,115,22,0.3); box-shadow: 0 8px 28px rgba(249,115,22,0.09); transform: translateY(-4px)!important; }
+
+      .stat-item-icon {
+        width: 52px; height: 52px; border-radius: 50%;
+        border: 2px solid rgba(249,115,22,0.25);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--orange); font-size: 1.1rem;
+        background: rgba(249,115,22,0.05); margin-bottom: 4px;
+      }
+
+      .stat-item-number {
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 900; color: var(--text);
+        letter-spacing: -1px; line-height: 1;
+        display: flex; align-items: baseline; gap: 2px;
+      }
+
+      .stat-item-number .sfx { font-size: 0.5em; font-weight: 700; color: var(--orange); }
+
+      .stat-item-label {
+        font-size: 0.78rem; font-weight: 600; color: var(--muted);
+        text-transform: uppercase; letter-spacing: 1.5px;
+      }
+
+      /* ===== VISION & MISSION ===== */
+      .vision-section { padding: 96px 48px; }
+
+      .vision-section .section-title { margin-bottom: 60px; }
+
+      .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; }
+
+      .vision-card { border-radius: 18px; padding: 35px 25px; position: relative; overflow: hidden; }
+
+      .vision-card--vision {
+        background: #fff; border: 1px solid var(--border);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      }
+
+      .vision-card--mission {
+        background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+      }
+
+      .vision-card::after {
+        content: ''; position: absolute; bottom: -60px; right: -60px;
+        width: 200px; height: 200px; border-radius: 50%;
+        background: rgba(255,255,255,0.06); pointer-events: none;
+      }
+
+      .vision-card-icon {
+        width: 52px; height: 52px; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.15rem; margin-bottom: 22px;
+      }
+
+      .vision-card--vision .vision-card-icon  { background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.2); color:var(--orange); }
+      .vision-card--mission .vision-card-icon { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; }
+
+      .vision-card h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.2px; }
+      .vision-card--vision h3  { color: var(--text); }
+      .vision-card--mission h3 { color: #fff; }
+
+      .vision-card p { font-size: 0.93rem; line-height: 1.85; }
+      .vision-card--vision p  { color: var(--muted); }
+      .vision-card--mission p { color: rgba(255,255,255,0.85); }
+
+      .vision-card ul { list-style:none; margin-top:18px; display:flex; flex-direction:column; gap:10px; }
+      .vision-card ul li { display:flex; align-items:flex-start; gap:10px; font-size:0.9rem; color:rgba(255,255,255,0.9); }
+      .vision-card ul li i { color:rgba(255,255,255,0.7); margin-top:3px; flex-shrink:0; }
+
+      /* ===== QUALITY & CERTIFICATIONS ===== */
+      .quality-section {
+        background: #fafafa;
+        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        padding: 88px 48px; text-align: center;
+      }
+
+      .quality-section .section-title { margin-bottom: 16px; }
+
+      .quality-subtitle {
+        font-size: 0.93rem; color: var(--muted);
+        max-width: 560px; margin: 0 auto 56px; line-height: 1.75;
+      }
+
+      .cert-grid {
+        display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+        max-width: 900px; margin: 0 auto;
+      }
+
+      .cert-badge {
+        background: #fff; border: 1px solid var(--border); border-radius: 14px;
+        padding: 28px 36px; min-width: 160px;
+        display: flex; flex-direction: column; align-items: center; gap: 12px;
+        transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; cursor: default;
+      }
+
+      .cert-badge:hover { border-color:rgba(249,115,22,0.3); box-shadow:0 6px 24px rgba(249,115,22,0.08); transform:translateY(-3px); }
+
+      .cert-circle {
+        width: 64px; height: 64px; border-radius: 50%;
+        border: 2px solid var(--orange);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.7rem; font-weight: 800; color: var(--orange);
+        letter-spacing: 1px; text-align: center; line-height: 1.2; padding: 8px;
+      }
+
+      .cert-name { font-size: 0.8rem; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
+      .cert-desc { font-size: 0.73rem; color: var(--muted); text-align: center; line-height: 1.4; }
+
+      /* ===== RESPONSIVE ===== */
+      @media(max-width:1100px){ .global-grid{grid-template-columns:repeat(2,1fr);} .global-grid .stat-item:nth-child(4),.global-grid .stat-item:nth-child(5){grid-column:auto;margin:0;} }
+      @media(max-width:900px) { .vision-grid{grid-template-columns:1fr;} .about-intro,.vision-section{padding:40px 15px;} .global-section,.quality-section{padding:40px 15px;} .page-banner{height:270px;}.vision-card{padding: 30px 15px;} }
+      @media(max-width:640px) { .global-grid{grid-template-columns:1fr;} .cert-grid{gap:14px;} .cert-badge{min-width:130px;padding:22px 20px;} }
+    </style>
+  </head>
+  <body>
+
+    <script src="/header.js"></script>
+
+    <!-- PAGE BANNER -->
+    <section class="page-banner">
+      <img src="/images/about-banner.jpg" alt="Solar panels" onerror="this.style.display='none'">
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
+        <h1>About</h1>
+      </div>
+      <div class="page-banner-breadcrumb">
+        <a href="/index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>About Us</span>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="about-intro">
+      <h2>The Energy to Make an Impact</h2>
+      <p>Rudra Managements is a premier solar O&amp;M company founded in 2016, headquartered in Jodhpur, Rajasthan. We provide advanced, fully autonomous robotic services — cost-effectively maximising the performance of utility-scale PV sites all over India.</p>
+      <p>With over 8 years of expertise, our outstanding team of engineers, technicians, and operations professionals bring to the market the most safe and reliable solar maintenance services — designed to meet any challenge, supported by experienced O&amp;M specialists.</p>
+      <p>We continue to grow as one of India's most trusted solar energy management partners, offering the widest range of robotic cleaning and on-ground manpower services in the market.</p>
+    </section>
+
+    <!-- GLOBAL LEADER STATS -->
+    <section class="global-section">
+      <div class="global-container">
+        <h2 class="section-title">An Ever Growing Global Leader</h2>
+        <div class="global-grid">
+
+          <div class="stat-item" data-target="4000" data-suffix=" MW">
+            <div class="stat-item-icon"><i class="fas fa-bolt"></i></div>
+            <div class="stat-item-number"><span class="counter">0</span><span class="sfx"> MW</span></div>
+            <div class="stat-item-label">Developments</div>
+          </div>
+
+          <div class="stat-item" data-target="20" data-suffix="+">
+            <div class="stat-item-icon"><i class="fas fa-certificate"></i></div>
+            <div class="stat-item-number"><span class="counter">0</span><span class="sfx">+</span></div>
+            <div class="stat-item-label">Patents Fully Granted</div>
+          </div>
+
+          <div class="stat-item" data-target="10000" data-suffix=" MW">
+            <div class="stat-item-icon"><i class="fas fa-file-signature"></i></div>
+            <div class="stat-item-number"><span class="counter">0</span><span class="sfx"> MW</span></div>
+            <div class="stat-item-label">Signed Agreements</div>
+          </div>
+
+          <div class="stat-item" data-target="10" data-suffix=".5B">
+            <div class="stat-item-icon"><i class="fas fa-solar-panel"></i></div>
+            <div class="stat-item-number"><span class="counter">0</span><span class="sfx">.5B</span></div>
+            <div class="stat-item-label">Panels Cleaned</div>
+          </div>
+
+          <div class="stat-item" data-target="5" data-suffix="B+">
+            <div class="stat-item-icon"><i class="fas fa-tint"></i></div>
+            <div class="stat-item-number"><span class="counter">0</span><span class="sfx">B+</span></div>
+            <div class="stat-item-label">Litres of Water Saved</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION & MISSION -->
+    <section class="vision-section">
+      <h2 class="section-title">Our Vision &amp; Mission</h2>
+      <div class="vision-grid">
+
+        <div class="vision-card vision-card--vision">
+          <div class="vision-card-icon"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To be India's most trusted and innovative solar energy management company — driving the clean energy revolution through technology, reliability, and an uncompromising commitment to performance.</p>
+          <p style="margin-top:14px;">We envision a future where every solar asset operates at its maximum potential, every day — enabling our clients and the planet to thrive together sustainably.</p>
+        </div>
+
+        <div class="vision-card vision-card--mission">
+          <div class="vision-card-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Our Mission</h3>
+          <p>To deliver world-class solar O&amp;M services that maximise energy yield and profitability for our clients — through cutting-edge robotics, skilled manpower, and data-driven operations excellence.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Deploy advanced autonomous cleaning technology</li>
+            <li><i class="fas fa-check-circle"></i> Build India's most skilled solar workforce</li>
+            <li><i class="fas fa-check-circle"></i> Reduce water usage through dry robotic cleaning</li>
+            <li><i class="fas fa-check-circle"></i> Deliver measurable ROI for every client</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFIED FOR QUALITY -->
+    <section class="quality-section">
+      <h2 class="section-title">Certified for Quality and Control</h2>
+      <p class="quality-subtitle">Our processes, research, and deployment centres are fully certified to the highest standards of quality and control — ensuring resiliency across all verticals of our business.</p>
+      <div class="cert-grid">
+        <div class="cert-badge">
+          <div class="cert-circle">ISO<br>9001</div>
+          <div class="cert-name">ISO 9001</div>
+          <div class="cert-desc">Quality Management System</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-circle">ISO<br>14001</div>
+          <div class="cert-name">ISO 14001</div>
+          <div class="cert-desc">Environmental Management</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-circle">ISO<br>45001</div>
+          <div class="cert-name">ISO 45001</div>
+          <div class="cert-desc">Occupational Health &amp; Safety</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-circle">CE<br>MARK</div>
+          <div class="cert-name">CE Certified</div>
+          <div class="cert-desc">European Conformity Standard</div>
+        </div>
+      </div>
+    </section>
+
+    <script src="/footer.js"></script>
+
+    <script>
+      function easeOutQuart(t){ return 1-Math.pow(1-t,4); }
+      function animateCounter(el,target,duration){
+        const start=performance.now();
+        function update(now){ const p=Math.min((now-start)/duration,1); el.textContent=Math.floor(easeOutQuart(p)*target).toLocaleString(); if(p<1)requestAnimationFrame(update); else el.textContent=target.toLocaleString(); }
+        requestAnimationFrame(update);
+      }
+      const items=document.querySelectorAll('.stat-item');
+      const obs=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const el=entry.target, idx=[...items].indexOf(el), delay=idx*110;
+            setTimeout(()=>el.classList.add('visible'),delay);
+            setTimeout(()=>{ if(!el.classList.contains('counted')){ el.classList.add('counted'); animateCounter(el.querySelector('.counter'),parseInt(el.dataset.target),2000); } },delay+180);
+            obs.unobserve(el);
+          }
+        });
+      },{threshold:0.2});
+      items.forEach(item=>obs.observe(item));
+    </script>
+  </body>
+</html>
