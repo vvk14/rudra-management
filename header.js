@@ -18,7 +18,7 @@
     <header>
       <div class="header-container">
 
-        <a href="/index.html" class="logo">
+        <a href="/" class="logo">
           <img src="/images/logo.png" alt="Rudra"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
           <span class="logo-wordmark" style="display:none;">RUD<span>RA</span></span>
