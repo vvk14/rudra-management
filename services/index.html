@@ -12,6 +12,18 @@
   <link rel="stylesheet" href="/shared.css" />
   
   <style>
+    :root {
+      --green:   #4a9e38;
+      --orange:  #f48b29;
+      --eco-lime:#badb2a; /* Ecoppia Style Bright Lime Green */
+      --dark:    #1e293b; /* Premium Navy/Slate for Headings */
+      --darker:  #0f172a; 
+      --light:   #f8fafc; /* Very soft light slate/grey */
+      --white:   #ffffff;
+      --muted:   #64748b; /* Soft grey for paragraphs */
+      --border:  #e2e8f0;
+      --ease:    cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
     /* =========================================
        1. TOKENS & RESET (APPROVED LIGHT THEME)
     ========================================= */
@@ -163,14 +175,14 @@
     ========================================= */
     .clients-section { padding: 50px 6%; background: var(--light); border-bottom: 1px solid var(--border); }
     .clients-inner { max-width: 1040px; margin: 0 auto; }
-    .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .clients-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .client-box {
       background: var(--white); border: 1px solid var(--border); border-radius: 4px;
-      padding: 14px 10px; aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center;
+      padding: 14px 10px; aspect-ratio: 2/1; display: flex; align-items: center; justify-content: center;
       transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .client-box:hover { border-color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,0.06); transform: translateY(-2px); }
-    .client-box img { max-width: 80%; max-height: 32px; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: all 0.25s; }
+    .client-box img { max-width: 100%; max-height: 50px; object-fit: contain; transition: all 0.25s; }
     .client-box:hover img { filter: none; opacity: 1; }
 
     .contact-section { padding: 50px 6%; background: var(--white); }
@@ -309,12 +321,16 @@
         <p>Revolutionizing solar ROI for leading energy conglomerates worldwide.</p>
       </div>
       <div class="clients-grid">
-        <div class="client-box reveal d1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fortum_logo.svg/200px-Fortum_logo.svg.png" alt="Fortum" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
-        <div class="client-box reveal d2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/NTPC_Logo.svg/200px-NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
-        <div class="client-box reveal d3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Azure_Power_logo.svg/200px-Azure_Power_logo.svg.png" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
-        <div class="client-box reveal d4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Adani_2012_logo.svg/200px-Adani_2012_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
-        <div class="client-box reveal d5"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Brookfield_Asset_Management_logo.svg/200px-Brookfield_Asset_Management_logo.svg.png" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
-        <div class="client-box reveal d6"><span class="client-name-text">Arava Power</span></div>
+        <div class="client-box reveal d1"><img src="/images/client_images/acme-solar.webp" alt="ACME" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
+        <div class="client-box reveal d2"><img src="/images/client_images/NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
+        <div class="client-box reveal d3"><img src="/images/client_images/social-share-default-image.jpg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d4"><img src="/images/client_images/Vikram_Solar_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d5"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.52 PM (1).jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d6"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (1).jpeg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d7"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (2).jpeg" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d8"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d9"><img src="/images/client_images/WAREE.jpeg" alt="WAREE" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>WAREE</span>')"></div>   
+        <div class="client-box reveal d10"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.54 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>   
       </div>
     </div>
   </section>
